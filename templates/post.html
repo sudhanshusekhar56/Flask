@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Home</title>
+{% endblock %}
+
+{% block body %}
+<h1>Hey There!!! How are you?</h1>
+<!-- trying to access data from flask program to frontend -->
+
+    {% for post in posts %}
+    <h4> {{post.title}} </h4>
+    <p> {{post.content}} </p>
+    {% endfor %}
+
+{% endblock %}
