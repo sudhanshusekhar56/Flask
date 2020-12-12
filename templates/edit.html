@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Edit Post</title>
+{% endblock %}
+
+
+
+
+{% block body %}
+<h1>Hey There!!! How are you?</h1>
+<!-- trying to access data from flask program to frontend -->
+<hr>
+<h2>Let's Edit BlogPost</h2>
+<form action="/posts/edit/{{post.id}}" method="POST">
+    Title : <input type="text" name="title" id="title" value={{post.title}}>
+    <br><br>
+    Post : <input type="text" name="content" id="content" value={{post.content}}>
+    <br><br>
+    Author: <input type="text" name="author" id="author" value={{post.author}}>
+    <br><br>
+    <input type="submit" value="Save">
+</form>
+{% endblock %}

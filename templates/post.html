@@ -1,16 +1,39 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Home</title>
+<title>BlogPost</title>
 {% endblock %}
+
+
+
 
 {% block body %}
 <h1>Hey There!!! How are you?</h1>
 <!-- trying to access data from flask program to frontend -->
+<hr>
+<h2>Let's Create New BlogPost</h2>
+<form action="/posts" method="POST">
+    Title : <input type="text" name="title" id="title">
+    <br><br>
+    Post : <input type="text" name="content" id="content">
+    <br><br>
+    Author: <input type="text" name="author" id="author">
+    <br><br>
+    <input type="submit" value="Post">
+</form>
+<hr>
 
-    {% for post in posts %}
-    <h4> {{post.title}} </h4>
-    <p> {{post.content}} </p>
-    {% endfor %}
+{% for post in posts %}
+<h4> {{post.title}} </h4>
+{% if post.author %}
+<h5>By: {{post.author}}</h5>
+{% else %}
+<h5>By: N/A</h5>
+{% endif %}
+<p> {{post.content}} </p>
+<a href="/posts/delete/{{post.id}}">Delete</a>
+<a href="/posts/edit/{{post.id}}">Edit</a>
+<hr>
+{% endfor %}
 
 {% endblock %}
